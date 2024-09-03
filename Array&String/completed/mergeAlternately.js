@@ -43,5 +43,25 @@ word1 and word2 consist of lowercase English letters.
 */
 
 var mergeAlternately = function (word1, word2) {
+    let result = '';
+    const maxLength = Math.max(word1.length, word2.length);
 
+    // Iterate through the longest string
+    for (let i = 0; i < maxLength; i++) {
+        // Add the character from word1 if it exists
+        if (word1[i] !== undefined) {
+            result += word1[i];
+        }
+        // Add the character from word2 if it exists
+        if (word2[i] !== undefined) {
+            result += word2[i];
+        }
+    }
+
+    return result;
 };
+
+// Test cases
+console.log(mergeAlternately("abc", "pqr")); // "apbqcr"
+console.log(mergeAlternately("ab", "pqrs")); // "apbqrs"
+console.log(mergeAlternately("abcd", "pq")); // "apbqcd"
