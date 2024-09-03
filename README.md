@@ -1,5 +1,6 @@
 
 # Interview Preparation: Top Interview 150
+Link:  https://leetcode.com/studyplan/top-interview-150/
 
 Welcome to my Interview Preparation Repository! This README outlines my preparation plan using the "Top Interview 150" list from LeetCode. The goal is to strengthen my problem-solving skills, improve algorithmic thinking, and be well-prepared for technical interviews.
 
