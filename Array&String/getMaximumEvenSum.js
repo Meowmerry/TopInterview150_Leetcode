@@ -68,7 +68,25 @@ const result = totalSum - minOdd
 
 // Time: O(n) where n is the length of array tag
 // Space: O(1) 
+// function getMaximumEvenSum(array) {
+//     let totalSum = 0;
+//     let minOdd = Infinity;
 
+//     for (const num of array) {
+//         if (num > 0) {
+//             totalSum += num;
+//         }
+
+//         if (num % 2 !== 0) {
+//             minOdd = Math.min(minOdd, Math.abs(num));
+//         }
+
+//     }
+
+//     if (totalSum % 2 == 0) {
+//         return totalSum;
+//     }
+// }
 function getMaximumEvenSum(array) {
     let totalSum = 0;
     let minOdd = Infinity;
@@ -96,3 +114,6 @@ function getMaximumEvenSum(array) {
 console.log(getMaximumEvenSum([2, 3, 6, -5, 10, 1, 1])); // 22
 console.log(getMaximumEvenSum([2, 3, 6, -5, 10, -1])); // 20
 console.log(getMaximumEvenSum([5, -1, -2, -3, 8, 7])); // 20
+console.log(getMaximumEvenSum([-5, -1, -2, -3, -8, -7])); // 0
+console.log(getMaximumEvenSum([-99, -1, 1, 2])); // 2
+console.log(getMaximumEvenSum([-5, -1, 3, 10])); // 12
