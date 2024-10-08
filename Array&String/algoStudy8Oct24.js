@@ -40,33 +40,89 @@ Brainstrom:
 
 Plan:
 */
+
+
+// var longestPalindrome = function (s) {
+//   let palindromeNumber = 1;
+//   let output = "";
+
+//   for (let i = 0; i < s.length; i++) {
+//     for (let j = s.length - 1; j >= i; j--) {
+//       //   console.log(i, j);
+//       if (isPalindrome(s, i, j)) {
+//         let numOfLetter = j + 1 - i;
+//         if (numOfLetter > palindromeNumber) {
+//           palindromeNumber = numOfLetter;
+//           output = s.slice(i, j + 1);
+//         } else if (numOfLetter === palindromeNumber && output.length === 0) {
+//           output = s.slice(i, j + 1);
+//         }
+//         // console.log(palindromeIsTrue);
+//       }
+//     }
+//   }
+
+
+//   // console.log(output);
+//   return output;
+// };
+
+// var isPalindrome = function (s, start, end) {
+//   if (start > end) return true;
+//   if (s[start] !== s[end]) {
+//     return false;
+//   } else {
+//     return isPalindrome(s, start + 1, end - 1);
+//   }
+// };
+
+function longestPalindrome(string) {
+
+  let len = string.length;
+  // Iterate backward from last length
+  while (len >= 0) {// Time O(N)
+    // Iterate from front, stop at the last index 
+    for (let start = 0; start <= string.length - len; start++) { // Time O(N)
+      // check if string is isPalindrome, 
+      if (isPalindrome(string, start, len)) {
+        // if meet palindrome will return here
+        return string.substring(start, start + len);
+      }
+    }
+    len--;
+  }
+  return '';
+
+}
+/*
+Time Complexity:  𝑂(𝑁3)
+
+Space Complexity:  O(1)
+*/
 function isPalindrome(string, start = 0, len) {
+  // let len is == len or string length
   len = len || string.length;
+  // defind th end point with each start with subtract length by 1
   let end = start + len - 1;
-  while (start < end) {
+  while (start < end) {// O(N)
     if (string[start++] !== string[end--]) {
-      return false
+      return false;
     }
   }
   return true;
 }
 
-function longestPalindrome(string) {
-  let result = ''
-  
-
-
-  return result;
-}
 
 
 // Test Cases
-console.log(longestPalindrome("ba") == "b"); // Should print "b"
-console.log(longestPalindrome("babe") == "bab"); // Should print "bab"
-console.log(longestPalindrome("abaxyzzyxf") == "xyzzyx"); // Should print "xyzzyx"
-console.log(longestPalindrome("it's afternoon") === "noon"); // Should print "noon"
-console.log(longestPalindrome("a") == "a"); // Should print "a"
-console.log(longestPalindrome("kb12365456321bb") === 'b12365456321b');  // b12365456321b
+// console.log(longestPalindrome("ba") == "b"); // Should print "b"
+// console.log(longestPalindrome("babe") == "bab"); // Should print "bab"
+// console.log(longestPalindrome("abaxyzzyxf") == "xyzzyx"); // Should print "xyzzyx"
+// console.log(longestPalindrome("it's afternoon") === "noon"); // Should print "noon"
+// console.log(longestPalindrome("a") == "a"); // Should print "a"
+// console.log(longestPalindrome("kb12365456321bb") === 'b12365456321b');  // b12365456321b
+// console.log(longestPalindrome("") === '');  // ''
+
 
 
 
@@ -79,6 +135,44 @@ Examples:
 
 Given a linked list: [13, 1, 5, 3, 7, 10], k: 1 // returns 10
 Given a linked list: [13, 1, 5, 3, 7, 10], k: 3 // returns 3
+
+Explore:
+- K can be 0 or greather than len,  return -1
+- if list is null return -1
+
+Input: List or null
+Output: Number
+
+Brainstrom:
+create a count function to count all the len
+  travers throught the list until count - k === 0
+  
+
+
+
+- count length === 6
+ 6 - 1 = 5
+ 6 - 3 = 3
+
+
+Plan:
+[13, 1, 5, 3, 7, 10], k: 1 
+set dummy node to listNode
+dummy = list;
+
+while(k > 0){ 
+   dummy = dummy.next;
+   k--
+}
+  [13, 1, 5, 3, 7, 10]
+ dummy = [1, 5, 3, 7, 10]
+ while(dummy){
+    node =  node.next
+    dummy = dummy.next
+ }
+reutrn node.value
+
+
 [execution time limit] 4 seconds (js)
 
 [memory limit] 1 GB
@@ -101,11 +195,48 @@ class ListNode {
   }
 }
 
-function kthFromLast(head, k) {
+// function kthFromLast(head, k) {
+//   if (head === null) return -1;
+//   let dummy = head;
 
+//   while (k > 0) {
+//     if (dummy) {
+//       dummy = dummy.next;
+//     } else {
+//       return -1;
+//     }
+//     k--;
+//   }
+
+//   while (dummy) {
+//     head = head.next;
+//     dummy = dummy.next;
+//   }
+//   return head.value;
+// }
+
+function kthFromLast(head, k) {
+  if (head === null) return -1;
+  let fast = head;
+  let slow = head;
+  //[13, 1, 5, 3, 7, 10], k: 1 
+  while (fast) {
+    fast = fast.next;
+    if (k <= 0) {
+      slow = slow.next; // 1 -> 5 ->
+    }
+    k--;
+  }
+
+  if (k > 0) {
+    return -1;
+  }
+
+  return slow.value;
 }
 // Test Cases
 var LL1 = new ListNode(13, new ListNode(1, new ListNode(5, new ListNode(3, new ListNode(7, new ListNode(10))))));
+console.log(kthFromLast(null)); // -1
 console.log(kthFromLast(LL1, 1)); // 10
 console.log(kthFromLast(LL1, 3)); // 3 
 console.log(kthFromLast(LL1, 6)); // 13
