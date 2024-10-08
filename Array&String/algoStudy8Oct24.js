@@ -6,18 +6,57 @@ Q. Given a string, find the longest palindromic substring. You may assume there 
 
 Examples:
 • Given a string: "babe" // returns"bab"
+• Given a string: "baba" // returns"bab or aba"
 • Given a string: "aefez" // returns "efe"
 • Given a string: "a" // returns "a"
 • Given a string: "aaa" // returns "aaa"
 • Given a string: "" // returns ""
 
+Explore:
+Input: String
+Output: longest substring
+- string can be empty return ''
+- string can be any length
+- if can't find palindrom return ''
 
+Brainstrom:
+  - Iterate string backword len = str.length; len >= str.length
+      babe 
+      interate string from front
+        start = 0 , star < string.length - end ; start++
+            palindrome(string, start, end)
+               
+
+  - create a palindrom with string, start= 0, end = string.length
+  if it is palindrome then move both
+  if it is not palindrome then try both 
+   - move front pointer
+   - move back pointer
+   palindrome(babe, start, 4)
+     end = 4 || end
+
+      if(b !== e) return false
+  
+
+Plan:
 */
+function isPalindrome(string, start = 0, len) {
+  len = len || string.length;
+  let end = start + len - 1;
+  while (start < end) {
+    if (string[start++] !== string[end--]) {
+      return false
+    }
+  }
+  return true;
+}
 
 function longestPalindrome(string) {
+  let result = ''
+  
 
 
-
+  return result;
 }
 
 
@@ -28,6 +67,8 @@ console.log(longestPalindrome("abaxyzzyxf") == "xyzzyx"); // Should print "xyzzy
 console.log(longestPalindrome("it's afternoon") === "noon"); // Should print "noon"
 console.log(longestPalindrome("a") == "a"); // Should print "a"
 console.log(longestPalindrome("kb12365456321bb") === 'b12365456321b');  // b12365456321b
+
+
 
 /* ===========================================================
 Q. Given a linked list, return the kth element from the end of the list.
@@ -54,10 +95,10 @@ head of the list
 
 */
 class ListNode {
-    constructor(value = 0, next = null) {
-        this.value = value;
-        this.next = next;
-    }
+  constructor(value = 0, next = null) {
+    this.value = value;
+    this.next = next;
+  }
 }
 
 function kthFromLast(head, k) {
