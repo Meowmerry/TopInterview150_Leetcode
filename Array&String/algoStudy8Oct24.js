@@ -236,11 +236,11 @@ function kthFromLast(head, k) {
 }
 // Test Cases
 var LL1 = new ListNode(13, new ListNode(1, new ListNode(5, new ListNode(3, new ListNode(7, new ListNode(10))))));
-console.log(kthFromLast(null)); // -1
-console.log(kthFromLast(LL1, 1)); // 10
-console.log(kthFromLast(LL1, 3)); // 3 
-console.log(kthFromLast(LL1, 6)); // 13
-console.log(kthFromLast(LL1, 7)); // -1
+// console.log(kthFromLast(null)); // -1
+// console.log(kthFromLast(LL1, 1)); // 10
+// console.log(kthFromLast(LL1, 3)); // 3 
+// console.log(kthFromLast(LL1, 6)); // 13
+// console.log(kthFromLast(LL1, 7)); // -1
 
 
 
@@ -266,6 +266,16 @@ max value
 
 
 */
+
+
+
+
+var LL1 = new ListNode(13, new ListNode(1, new ListNode(5, new ListNode(3, new ListNode(7, new ListNode(10))))));
+// console.log(kthFromLast(null)); // -1
+// console.log(kthFromLast(LL1, 1)); // 10
+// console.log(kthFromLast(LL1, 3)); // 3 
+// console.log(kthFromLast(LL1, 6)); // 13
+// console.log(kthFromLast(LL1, 7)); // -1
 
 /* ===========================================================
 Q. Given a non-empty binary tree, find the maximum path sum.
